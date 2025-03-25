@@ -11,8 +11,8 @@ Pastikan kamu memiliki software berikut sebelum memulai:
 
 1. **Clone Repository**  
     ```bash
-    git clone https://github.com/username/repo-name.git
-    cd repo-name
+    git clone https://github.com/rendyfrasya/evora_be.git
+    cd evora_be
     ```
 
 2. **Buat File `.env`**  
