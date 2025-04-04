@@ -8,7 +8,7 @@ const TicketSchema = new mongoose.Schema({
 		required: [true, 'Nama tiket harus diisi.'],
 	},
 	price: {
-		type: Double,
+		type: Number,
 		default: 0,
 	},
 	stock:{

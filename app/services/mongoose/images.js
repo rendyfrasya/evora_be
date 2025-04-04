@@ -12,7 +12,7 @@ const createImages = async (req) => {
 		url_image: req.file
 		? `uploads/${req.file.filename}`
 		: 'uploads/avatar/default.jpeg',
-        mime: req.file.mimetype,  // Simpan MIME type
+        mime: req.file.mimetype,
         size: req.file.size
 	});
 	return result;

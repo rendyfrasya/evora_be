@@ -2,6 +2,27 @@ const req = require('express/lib/request');
 const mongoose = require('mongoose');
 const {model,Schema} = mongoose;
 
+let TicketsEventSchema = Schema(
+	{
+		name:{
+			type: String,
+			required: [true, 'Nama harus diisi'],
+		},
+		price: {
+			type: Number,
+			default: 0,
+		},
+		stock:{
+			type: Number,
+			default: 0,
+		},
+		is_available:{
+			type: Boolean,
+			default: true,
+		}
+	}
+)
+
 let EventSchema = Schema(
 	{
 		name:{
@@ -31,13 +52,16 @@ let EventSchema = Schema(
 			enum: ['Draft', 'Published'],
 			default: 'Draft',
 		},
-		tickets: [ 
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "Tickets",
-				required: true,
-			}
-		],
+		tickets: {
+			type: [TicketsEventSchema],
+			validate: {
+				validator: function (v) {
+					return v.length > 0;
+				},
+				message: "Minimal harus ada 1 tiket."
+			},
+			required: true,
+		},		
 		image:{
 			type: mongoose.Types.ObjectId,
 			ref:"Images",
