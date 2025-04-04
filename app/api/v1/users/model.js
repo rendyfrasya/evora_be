@@ -31,3 +31,18 @@ let userSchema = Schema(
 	},
 	{ timestamps: true }
 );
+
+userSchema.pre('save', async function (next) {
+	const User = this;
+	if (User.isModified('password')) {
+		User.password = await bcrypt.hash(User.password, 12);
+	}
+	next();
+})
+
+userSchema.methods.comparePassword = async function (candidatePassword) {
+	const isMatch = await bcrypt.compare(candidatePassword, this.password);
+	return isMatch;
+}
+
+module.export = model('Users', userSchema);

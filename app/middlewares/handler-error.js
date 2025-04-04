@@ -1,5 +1,4 @@
 const { StatusCodes } = require('http-status-codes');
-const { success } = require('../utils/response');
 const errorHandleMiddleware = (err,req,res,next) => {
 	let customError = {
 		success: false,
@@ -7,7 +6,7 @@ const errorHandleMiddleware = (err,req,res,next) => {
 		msg: err.message || "Something went wrong, try again later",
 	};
 
-	//Error validation dari DB(Monggodse)
+	//Error validation dari DB(Monggodb)
 	if(err.name === 'ValidationError'){
 		customError.msg = Object.values(err.errors)
 			.map((item) => item.message)
