@@ -3,9 +3,9 @@ const {model,Schema} = mongoose;
 
 let organizerSchema = Schema(
 	{
-		name:{
+		organizer:{
 			type: String,
-			required: [true, 'Nama penyelenggara harus diisi'],
+			required: [true, 'Nama organizer harus diisi'],
 		},
 	},
 	{ timestamps: true }

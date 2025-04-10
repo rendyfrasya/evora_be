@@ -1,6 +1,5 @@
 const Categories = require('./model');
 const response = require('../../../utils/response');
-const req = require('express/lib/request');
 const { getAllCategories,createCategories,getOneCategories, updateCategories, deleteCategories } = require('../../../services/mongoose/categories');
 
 const create = async (req,res,next) => {

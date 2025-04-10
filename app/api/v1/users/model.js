@@ -1,6 +1,6 @@
-const e = require('express');
 const mongoose = require('mongoose');
 const {model,Schema} = mongoose;
+const bcrypt = require('bcryptjs');
 
 let userSchema = Schema(
 	{
@@ -45,4 +45,4 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 	return isMatch;
 }
 
-module.export = model('Users', userSchema);
+module.exports = model('Users', userSchema);
