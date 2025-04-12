@@ -13,7 +13,7 @@ const create = async (req,res,next) => {
 
 const index = async (req,res,next) =>{
 	try {
-		const result = await getAllCategories();
+		const result = await getAllCategories(req);
 		response.success(result, "Categories data get!", res)
 	} catch (error) {
 		next(error);
